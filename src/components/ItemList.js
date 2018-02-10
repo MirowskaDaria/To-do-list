@@ -5,18 +5,27 @@ const ItemList = (props) => {
 
     const handleClick = () => {
 
-    }
+    };
+
+    const getFormatedDate = () => {
+        const date = new Date(props.date.replace(' ', ''));
+
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+
+        return [year, month, day].join("-");
+    };
 
     return (
-        <ListGroup>
-            <ListGroupItem>
-                <img src={props.img}/>
-                {props.title}
-                {props.date}
-                {props.date}
-                <Button onClick={handleClick}>Szczegóły</Button>
-            </ListGroupItem>
-        </ListGroup>
+        <li>
+            <img src={props.img}/>
+            <br>{props.id}</br>
+            <br>{props.title}</br>
+            <br>{getFormatedDate()}</br>
+            <div>{props.tags}</div>
+            <Button onClick={handleClick}>Szczegóły</Button>
+        </li>
     )
 };
 
